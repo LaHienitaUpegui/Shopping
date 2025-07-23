@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Catalogo de productos</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- * Barra de navegacion -->
+        <header class="header">
+            <nav class="barra-navegacion">
+                <h1 class="nombre-principal">Catalogo de productos</h1>
+                <button class="btn-add-product" id="btn-agregar-producto">
+                    Agregar producto
+                </button>
+            </nav>
+        </header>
+        <main class="products">
+            <!-- * Modal para agregar productos -->
+            <div class="modal oculto">
+                <div class="modal-contenido">
+                    <h2 class="titulo-modal">Agregar un nuevo producto</h2>
+
+                    <!-- * Formulario para agregar productos -->
+                    <form action="" id="formulario-agregar-producto">
+                        <!-- * Campo para subir una imagen del producto -->
+                        <label for="imagen-producto"
+                            >Agrega un imagen del producto</label
+                        >
+                        <input
+                            type="file"
+                            name="imagen-producto"
+                            id="imagen-producto"
+                        />
+
+                        <!-- * Campo para ingresar el nombre del producto -->
+                        <label for="nombre-producto">Nombre del producto</label>
+                        <input
+                            type="text"
+                            id="nombre-producto"
+                            name="nombre-producto"
+                            required
+                        />
+
+                        <!-- * Campo para ingresar el precio del producto -->
+                        <label for="precio-producto">Precio</label>
+                        <input
+                            type="number"
+                            name="precio-producto"
+                            id="precio-producto"
+                            required
+                        />
+
+                        <!-- * Campo para ingresar la cantidad del producto -->
+                        <label for="cantidad-producto">Cantidad</label>
+                        <input
+                            type="number"
+                            name="cantidad-producto"
+                            id="cantidad-producto"
+                            required
+                        />
+
+                        <!-- * Botones para enviar o cancelar el formulario -->
+                        <button class="btn-agregar-producto" type="submit">
+                            Agregar producto
+                        </button>
+                        <button class="btn-cancelar-producto" type="button">
+                            Cancelar
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <!-- * Agregar productos aquí -->
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
