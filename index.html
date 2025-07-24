@@ -20,15 +20,6 @@
                 </button>
             </nav>
         </header>
-        <nav class="barra-funciones">
-            <select name="categorias" id="barra-categorias">
-                <option value="">Sin categoria</option>
-                <option value="alimentos">Alimentos</option>
-                <option value="bebidas">Bebidas</option>
-                <option value="higiene">Higiene</option>
-                <option value="agregar-categoria">Agregar categoria</option>
-            </select>
-        </nav>
         <main class="products">
             <!-- * Modal para agregar productos -->
             <div class="modal oculto">
@@ -75,6 +66,13 @@
                         />
 
                         <!-- * Botones para enviar o cancelar el formulario -->
+                        <button
+                            class="btn-guardar-cambios"
+                            type="button"
+                            hidden
+                        >
+                            Guardar cambios
+                        </button>
                         <button class="btn-agregar-producto" type="submit">
                             Agregar producto
                         </button>
@@ -84,6 +82,7 @@
                     </form>
                 </div>
             </div>
+            <div id="contenedor-tarjetas"></div>
             <!-- * Agregar productos aquí -->
         </main>
         <script src="script.js"></script>
