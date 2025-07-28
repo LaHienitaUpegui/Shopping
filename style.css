@@ -40,7 +40,8 @@ body {
     }
 }
 
-.modal {
+.modalCreacionProducto,
+.modalModificacionProducto {
     position: fixed;
     top: 0;
     left: 0;
@@ -59,14 +60,11 @@ body {
     width: 300px;
 }
 
-#formulario-agregar-producto {
+#formulario-agregar-producto,
+#formulario-modificar-producto {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-}
-
-.oculto {
-    display: none;
 }
 
 #contenedor-tarjetas {
@@ -104,4 +102,35 @@ body {
     background: red;
     transform: scale(1.05);
     transition: 0.2s ease-in-out;
+}
+
+.modal-crear-categoria-contenedor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-crear-categoria-contenido {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 300px;
+}
+
+#formulario-crear-categoria {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.oculto {
+    display: none;
 }

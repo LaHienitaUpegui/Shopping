@@ -11,7 +11,7 @@
         />
     </head>
     <body>
-        <!-- * Barra de navegacion -->
+        <!-- Barra de navegacion -->
         <header class="header">
             <nav class="barra-navegacion">
                 <h1 class="nombre-principal">Catalogo de productos</h1>
@@ -19,16 +19,37 @@
                     Agregar producto
                 </button>
             </nav>
+
+            <!-- Barra de acciones -->
+            <nav class="barra-acciones">
+                <div id="filtro-categoria-contenedor">
+                    <label for="filtro-categorias"
+                        >Filtrar por categorias</label
+                    >
+                    <select id="filtro-categorias">
+                        <option class="opcion-filtro" value="sin-categoria">
+                            Sin categoria
+                        </option>
+                    </select>
+                    <button
+                        type="button"
+                        class="btn-aplicar-filtro-categoria"
+                        id="btn-aplicar-filtro-categoria"
+                    >
+                        Aplicar filtro
+                    </button>
+                </div>
+            </nav>
         </header>
         <main class="products">
             <!-- * Modal para agregar productos -->
-            <div class="modal oculto">
+            <div class="modalCreacionProducto oculto">
                 <div class="modal-contenido">
                     <h2 class="titulo-modal">Agregar un nuevo producto</h2>
 
-                    <!-- * Formulario para agregar productos -->
+                    <!-- Formulario para agregar productos -->
                     <form action="" id="formulario-agregar-producto">
-                        <!-- * Campo para subir una imagen del producto -->
+                        <!-- Campo para subir una imagen del producto -->
                         <label for="imagen-producto"
                             >Agrega un imagen del producto</label
                         >
@@ -38,7 +59,7 @@
                             id="imagen-producto"
                         />
 
-                        <!-- * Campo para ingresar el nombre del producto -->
+                        <!-- Campo para ingresar el nombre del producto -->
                         <label for="nombre-producto">Nombre del producto</label>
                         <input
                             type="text"
@@ -47,7 +68,7 @@
                             required
                         />
 
-                        <!-- * Campo para ingresar el precio del producto -->
+                        <!-- Campo para ingresar el precio del producto -->
                         <label for="precio-producto">Precio</label>
                         <input
                             type="number"
@@ -56,7 +77,7 @@
                             required
                         />
 
-                        <!-- * Campo para ingresar la cantidad del producto -->
+                        <!-- Campo para ingresar la cantidad del producto -->
                         <label for="cantidad-producto">Cantidad</label>
                         <input
                             type="number"
@@ -65,14 +86,25 @@
                             required
                         />
 
-                        <!-- * Botones para enviar o cancelar el formulario -->
-                        <button
-                            class="btn-guardar-cambios"
-                            type="button"
-                            hidden
+                        <!-- Campo para seleccionar la categoria del producto -->
+                        <div id="titulo-categorias-contenedor">
+                            <label for="categoria-producto">Categoria</label>
+                            <button
+                                type="button"
+                                class="btn-agregar-categoria"
+                                id="btn-agregar-categoria"
+                            >
+                                Agregar categoria
+                            </button>
+                        </div>
+                        <select
+                            id="categoria-producto"
+                            name="categoria-producto"
                         >
-                            Guardar cambios
-                        </button>
+                            <option value="sin-categoria">Sin categoria</option>
+                        </select>
+
+                        <!-- Botones para enviar o cancelar el formulario -->
                         <button class="btn-agregar-producto" type="submit">
                             Agregar producto
                         </button>
@@ -82,9 +114,122 @@
                     </form>
                 </div>
             </div>
+
+            <!-- * Modal para modificar un producto ya existente -->
+            <div class="modalModificacionProducto oculto">
+                <div class="modal-contenido">
+                    <h2 class="titulo-modal">Modificar producto</h2>
+
+                    <!-- Formulario para modificar productos -->
+                    <form action="" id="formulario-modificar-producto">
+                        <!-- Campo con la imagen actual del producto -->
+                        <label for="modificar-imagen-producto"
+                            >Agrega un imagen del producto</label
+                        >
+                        <input
+                            type="file"
+                            name="modificar-imagen-producto"
+                            id="modificar-imagen-producto"
+                        />
+
+                        <!-- Campo con el nombre actual del producto -->
+                        <label for="modificar-nombre-producto"
+                            >Nombre del producto</label
+                        >
+                        <input
+                            type="text"
+                            id="modificar-nombre-producto"
+                            name="modificar-nombre-producto"
+                            required
+                        />
+
+                        <!-- Campo con el precio actual del producto -->
+                        <label for="modificar-precio-producto">Precio</label>
+                        <input
+                            type="number"
+                            name="modificar-precio-producto"
+                            id="modificar-precio-producto"
+                            required
+                        />
+
+                        <!-- Campo la cantidad actual del prooducto -->
+                        <label for="modificar-cantidad-producto"
+                            >Cantidad</label
+                        >
+                        <input
+                            type="number"
+                            name="modificar-cantidad-producto"
+                            id="modificar-cantidad-producto"
+                            required
+                        />
+
+                        <!-- Campo con la categoria actual del producto -->
+                        <div id="titulo-categorias-contenedor">
+                            <label for="modificar-categoria-producto"
+                                >Categoria</label
+                            >
+                            <button
+                                type="button"
+                                class="btn-agregar-categoria"
+                                id="btn-agregar-categoria"
+                            >
+                                Agregar categoria
+                            </button>
+                        </div>
+                        <select
+                            id="modificar-categoria-producto"
+                            name="modificar-categoria-producto"
+                        >
+                            <option value="sin-categoria">Sin categoria</option>
+                        </select>
+
+                        <!-- Botones para enviar o cancelar el formulario -->
+                        <button class="btn-guardar-cambios" type="button">
+                            Guardar cambios
+                        </button>
+                        <button
+                            class="btn-cancelar-modificacion-producto"
+                            type="button"
+                        >
+                            Cancelar
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- * Modal para crear una categoria -->
+            <div class="modal-crear-categoria-contenedor oculto">
+                <div class="modal-crear-categoria-contenido">
+                    <h2 class="titulo-modal-crear-categoria">
+                        Crear una nueva categoria
+                    </h2>
+                    <form action="" id="formulario-crear-categoria">
+                        <label for="nombre-categoria"
+                            >Nombre de la categoria</label
+                        >
+                        <input
+                            type="text"
+                            id="nombre-categoria"
+                            name="nombre-categoria"
+                            required
+                        />
+                        <button type="submit" class="btn-crear-categoria">
+                            Crear categoria
+                        </button>
+                        <button
+                            type="button"
+                            class="btn-cancelar-creacion-categoria"
+                        >
+                            Cancelar
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contenedor de tarjetas de productos -->
             <div id="contenedor-tarjetas"></div>
-            <!-- * Agregar productos aquí -->
         </main>
         <script src="script.js"></script>
+        <script src="categorias.js"></script>
     </body>
 </html>
