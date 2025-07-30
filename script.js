@@ -22,21 +22,7 @@ btnAgregarProducto.addEventListener("click", () => {
     document.getElementById("categoria-producto").value = "sin-categoria";
 
     // se cargan las categorias ya exisistentes en el localStorage, en el campo de seleccion de categorias
-    const categorias = JSON.parse(localStorage.getItem("categorias")) || [];
-    const selectorCategorias = document.getElementById("categoria-producto");
-    categorias.forEach((categoria) => {
-        // Verifica si ya existe un option con ese valor
-        if (
-            !Array.from(selectorCategorias.options).some(
-                (opt) => opt.value === categoria.nombre
-            )
-        ) {
-            let option = document.createElement("option");
-            option.value = categoria.nombre;
-            option.innerText = categoria.nombre;
-            selectorCategorias.appendChild(option);
-        }
-    });
+    cargarCategoriasHaciaSelect({ selectId: "categoria-producto" });
 
     // se muestra el formulario
     formularioProducto.classList.remove("oculto");
@@ -227,51 +213,3 @@ document.addEventListener("click", (event) => {
         eliminarProducto(id);
     }
 });
-
-// Función para eliminar producto
-function eliminarProducto(id) {
-    // Eliminar del DOM
-    const tarjetaAEliminar = document.querySelector(
-        `.tarjeta-producto[data-id="${id}"]`
-    );
-    if (tarjetaAEliminar) {
-        tarjetaAEliminar.remove();
-    }
-
-    // Eliminar del localStorage
-    let productos = JSON.parse(localStorage.getItem("productos")) || [];
-    productos = productos.filter((producto) => producto.id !== id);
-    localStorage.setItem("productos", JSON.stringify(productos));
-}
-
-// Función para renderizar un nuevo producto en la lista de productos
-function renderizarNuevoProducto(nuevoProducto) {
-    const contenedorTarjetas = document.getElementById("contenedor-tarjetas");
-    const tarjetaDelNuevoProducto = document.createElement("div");
-    tarjetaDelNuevoProducto.classList.add("tarjeta-producto");
-    tarjetaDelNuevoProducto.setAttribute("data-id", nuevoProducto.id);
-    tarjetaDelNuevoProducto.innerHTML = `
-        ${
-            nuevoProducto.imagen
-                ? `<img src="${nuevoProducto.imagen}" alt="${nuevoProducto.nombre}" />`
-                : ""
-        }
-        <h3 class="nombre-producto">${nuevoProducto.nombre}</h3>
-        <p><strong>Precio:</strong> $${nuevoProducto.precio}</p>
-        <p><strong>Cantidad:</strong> ${nuevoProducto.cantidad}</p>
-        <p><strong>Categoria:</strong> ${nuevoProducto.categoria}</p>
-        <button class="btn-modificar-producto" data-id="${
-            nuevoProducto.id
-        }">Modificar producto</button>
-        <button class="btn-eliminar-producto" data-id="${
-            nuevoProducto.id
-        }">Eliminar</button>
-    `;
-    contenedorTarjetas.appendChild(tarjetaDelNuevoProducto);
-}
-
-// Funcion para obtener el producto por medio del id
-function obtenerProductoPorId(id) {
-    const productos = JSON.parse(localStorage.getItem("productos")) || [];
-    return productos.find((producto) => producto.id === id);
-}
