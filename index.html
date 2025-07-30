@@ -31,6 +31,8 @@
                             Sin categoria
                         </option>
                     </select>
+
+                    <!-- Boton para aplicar el filtro de categoria -->
                     <button
                         type="button"
                         class="btn-aplicar-filtro-categoria"
@@ -38,12 +40,24 @@
                     >
                         Aplicar filtro
                     </button>
+
+                    <!-- Boton para abrir el modal de administrador de categorias -->
+                    <button
+                        type="button"
+                        class="btn-abrir-modal-admin-categorias"
+                        id="btn-abrir-modal-admin-categorias"
+                    >
+                        Administrar categorias
+                    </button>
                 </div>
             </nav>
         </header>
         <main class="products">
             <!-- * Modal para agregar productos -->
-            <div class="modalCreacionProducto oculto">
+            <div
+                class="modalCreacionProducto oculto"
+                id="modalCreacionProducto"
+            >
                 <div class="modal-contenido">
                     <h2 class="titulo-modal">Agregar un nuevo producto</h2>
 
@@ -198,11 +212,14 @@
             </div>
 
             <!-- * Modal para crear una categoria -->
-            <div class="modal-crear-categoria-contenedor oculto">
+            <div
+                class="modal-crear-categoria-contenedor oculto"
+                id="modal-crear-categoria-contenedor"
+            >
                 <div class="modal-crear-categoria-contenido">
-                    <h2 class="titulo-modal-crear-categoria">
-                        Crear una nueva categoria
-                    </h2>
+                    <h2 class="titulo-modal">Crear una nueva categoria</h2>
+
+                    <!-- Foromulario para crear una categoria -->
                     <form action="" id="formulario-crear-categoria">
                         <label for="nombre-categoria"
                             >Nombre de la categoria</label
@@ -226,10 +243,251 @@
                 </div>
             </div>
 
-            <!-- Contenedor de tarjetas de productos -->
+            <!-- * Modal de administrador de categorias -->
+            <div
+                class="modal-administrar-categorias-contenedor oculto"
+                id="modal-administrar-categorias-contenedor"
+            >
+                <div class="modal-administrar-categorias-contenido">
+                    <h2 class="titulo-modal-administrar-categorias">
+                        Administrar categorias
+                    </h2>
+                    <form action="" id="formulario-administrar-categorias">
+                        <!-- Selector de categoria existente y botones de acciones -->
+                        <fieldset id="categorias-existentes-contenedor">
+                            <label for="categorias-existentes"
+                                >Selecciona una categoria</label
+                            >
+                            <select
+                                id="categorias-existentes"
+                                name="categorias-existentes"
+                            >
+                                <option value="sin-categoria">
+                                    Sin categoria
+                                </option>
+                            </select>
+
+                            <!-- botones de acciones -->
+                            <button
+                                type="button"
+                                class="btn-acciones-categorias"
+                                id="btn-crear-nueva-categoria"
+                            >
+                                Crear categoria
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-acciones-categorias"
+                                id="btn-modificar-categoria"
+                            >
+                                Modificar categoria
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-acciones-categorias"
+                                id="btn-eliminar-categoria"
+                            >
+                                Eliminar categoria
+                            </button>
+                        </fieldset>
+
+                        <!-- Campo para botones de "Guardar cambios" y "Cancelar" -->
+                        <fieldset id="campo-botones-guardar-cancelar">
+                            <button
+                                type="button"
+                                class="btn-guardar-cambios-admin-categorias"
+                                id="btn-guardar-cambios-admin-categorias"
+                            >
+                                Guardar cambios
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-cancelar-cambios-admin-categorias"
+                                id="btn-cancelar-cambios-admin-categorias"
+                            >
+                                Cancelar
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <!-- * Modal para crear una categoria desde el admin de categorias -->
+            <div
+                class="modal-crear-categoria-admin-categorias-contenedor oculto"
+                id="modal-crear-categoria-admin-categorias-contenedor"
+            >
+                <div class="modal-crear-categoria-admin-categorias-contenido">
+                    <h2 class="titulo-modal-crear-categoria">
+                        Crear una nueva categoria
+                    </h2>
+                    <form
+                        action=""
+                        id="formulario-crear-categoria-admin-categorias"
+                    >
+                        <label for="nombre-categoria"
+                            >Nombre de la categoria</label
+                        >
+                        <input
+                            type="text"
+                            id="nombre-categoria-admin-categorias"
+                            name="nombre-categoria-admin-categorias"
+                            required
+                        />
+                        <button type="submit" class="btn-crear-categoria">
+                            Crear categoria
+                        </button>
+                        <button
+                            type="button"
+                            class="btn-cancelar-creacion-categoria-admin-categorias"
+                        >
+                            Cancelar
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- * Modal para modificar una categoria desde el admin de categorias -->
+            <div
+                id="modal-modificar-categoria-admin-categ-contenedor"
+                class="modal-modificar-categoria-admin-categ-contenedor oculto"
+            >
+                <div
+                    id="modal-modificar-categoria-admin-categ-contenido"
+                    class="modal-modificar-categoria-admin-categ-contenido"
+                >
+                    <h2 class="titulo-modal">Modificar una categoria</h2>
+
+                    <!-- Formulario para modificar una categoria ya existente -->
+                    <form
+                        action=""
+                        id="formulario-modificar-categoria-admin-categ"
+                        class="formulario-modificar-categoria-admin-categ"
+                        name="formulario-modificar-categoria-admin-categ"
+                    >
+                        <!-- Seleccionador de categoria existente -->
+                        <fieldset
+                            class="selector-categorias-existentes-contenedor"
+                            id="selector-categorias-existentes-contenedor"
+                        >
+                            <label for="selector-categorias-existentes"
+                                >Selecciona la categoria a modificar</label
+                            >
+                            <select
+                                name="selector-categorias-existentes"
+                                id="selector-categorias-existentes"
+                            >
+                                <option value="">
+                                    Seleccione una categoria
+                                </option>
+                            </select>
+                        </fieldset>
+
+                        <!-- Campo para ingresar el nuevo nombre de la categoria -->
+                        <fieldset
+                            class="input-nuevo-nombre-categoria-contenedor"
+                            id="input-nuevo-nombre-categoria-contenedor"
+                        >
+                            <label for="nuevo-nombre-categoria"
+                                >Nuevo nombre de la categoria</label
+                            >
+                            <input
+                                type="text"
+                                id="nuevo-nombre-categoria"
+                                name="nuevo-nombre-categoria"
+                                required
+                            />
+                        </fieldset>
+
+                        <!-- Botones para enviar o cancelar el formulario -->
+                        <fieldset
+                            class="botones-enviar-cancelar-contenedor"
+                            id="botones-enviar-cancelar-contenedor"
+                        >
+                            <button
+                                type="button"
+                                class="btn-enviar-modificar-categoria"
+                                id="btn-enviar-modificar-categoria"
+                            >
+                                Aceptar cambios
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-cancelar-modificar-categoria"
+                                id="btn-cancelar-modificar-categoria"
+                            >
+                                Cancelar
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <!-- * Modal para eliminar una categoria desde el admin de categorias -->
+            <div
+                id="modal-eliminar-categoria-admin-categ-contenedor"
+                class="modal-eliminar-categoria-admin-categ-contenedor oculto"
+            >
+                <div
+                    id="modal-eliminar-categoria-admin-categ-contenido"
+                    class="modal-eliminar-categoria-admin-categ-contenido"
+                >
+                    <h2 class="titulo-modal">Elimina una categoria</h2>
+
+                    <!-- Formulario para eliminar una categoria ya existente -->
+                    <form
+                        action=""
+                        id="formulario-eliminar-categoria-admin-categ"
+                        class="formulario-eliminar-categoria-admin-categ"
+                        name="formulario-eliminar-categoria-admin-categ"
+                    >
+                        <!-- Seleccionador de categoria existente -->
+                        <fieldset
+                            class="contenedor-categorias-para-eliminar"
+                            id="contenedor-categorias-para-eliminar"
+                        >
+                            <label for="selector-categorias-para-eliminar"
+                                >Selecciona la categoria a eliminar</label
+                            >
+                            <select
+                                name="selector-categorias-para-eliminar"
+                                id="selector-categorias-para-eliminar"
+                            >
+                                <option value="">
+                                    Seleccione una categoria
+                                </option>
+                            </select>
+                        </fieldset>
+
+                        <!-- Botones para eliminar categoria o para cancelar y salir del modal -->
+                        <fieldset
+                            class="botones-eliminar-cancelar-contenedor"
+                            id="botones-eliminar-cancelar-contenedor"
+                        >
+                            <button
+                                type="button"
+                                class="btn-aceptar-eliminar-categoria"
+                                id="btn-aceptar-eliminar-categoria"
+                            >
+                                Eliminar categoria
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-cancelar-eliminar-categoria"
+                                id="btn-cancelar-eliminar-categoria"
+                            >
+                                Cancelar
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <!-- * Contenedor de tarjetas de productos -->
             <div id="contenedor-tarjetas"></div>
         </main>
+        <script src="funciones.js"></script>
         <script src="script.js"></script>
         <script src="categorias.js"></script>
+        <script src="administrador_categorias.js"></script>
     </body>
 </html>

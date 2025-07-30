@@ -2,26 +2,9 @@ const modalCategoria = document.querySelector(
     ".modal-crear-categoria-contenedor"
 );
 
+// poner las categorias existentes en el local storage en el select de categorias de la pantalla principal
 window.addEventListener("DOMContentLoaded", () => {
-    // se selecciona el select donde van a ir las categorias
-    const selectorCategorias = document.getElementById("filtro-categorias");
-
-    // se trae la lista de categorias desde el locas storage
-    const categorias = JSON.parse(localStorage.getItem("categorias")) || [];
-
-    // se recorre cada categoria y se agrega solo las que no esten ya en el select
-    categorias.forEach((categoria) => {
-        if (
-            !Array.from(selectorCategorias.options).some(
-                (opt) => opt.value === categoria.nombre
-            )
-        ) {
-            const option = document.createElement("option");
-            option.value = categoria.nombre;
-            option.innerText = categoria.nombre;
-            selectorCategorias.appendChild(option);
-        }
-    });
+    cargarCategoriasHaciaSelect({ selectId: "filtro-categorias" });
 });
 
 // Abrir el modal de crear una categoria escuchando el click en el boton de crear categoria
@@ -38,45 +21,30 @@ btnAgregarCategoria.addEventListener("click", () => {
 const formularioCrearCategoria = document.getElementById(
     "formulario-crear-categoria"
 );
+// Llamada a la función crearCategoria al enviar el formulario
 formularioCrearCategoria.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
-    // Obtener el nombre de la nueva categoria
-    const nuevoNombreCategoria =
-        document.getElementById("nombre-categoria").value;
-
-    // Crear un nuevo objeto categoria
-    const categoria = {
-        nombre: nuevoNombreCategoria,
-    };
-
-    // Agregar la nueva categoria al select de categoria del formulario de creacion de producto
-    const selectCategoriaEnFormularioProducto =
-        document.getElementById("categoria-producto");
-    const option = document.createElement("option");
-    option.value = categoria.nombre;
-    option.innerText = categoria.nombre;
-    selectCategoriaEnFormularioProducto.appendChild(option);
-
-    // guardar la nueva categoria en el localStorage
-    let categorias = JSON.parse(localStorage.getItem("categorias")) || [];
-    categorias.push(categoria);
-    localStorage.setItem("categorias", JSON.stringify(categorias));
-
-    // Limpiar el formulario de creacion de categoria y ocultar el modal
-    formularioCrearCategoria.reset();
-    modalCategoria.classList.add("oculto");
-
-    // Mostrar el formulario de producto
-    formularioProducto.classList.remove("oculto");
+    if (evento.target.id === "formulario-crear-categoria") {
+        // llamar la funcion de crear una categoria desde agregar producto
+        crearCategoria({
+            inputNombreCategoriaId: "nombre-categoria",
+            formularioPrevio: formularioProducto,
+            selectformularioPrevioId: "categoria-producto",
+            formularioCreacionCategoria: formularioCrearCategoria,
+            modalFormularioCreacionCategoria: modalCategoria,
+        });
+    }
 });
 
 const btnCancelarCreacionCategoria = document.querySelector(
     ".btn-cancelar-creacion-categoria"
 );
 btnCancelarCreacionCategoria.addEventListener("click", () => {
-    modalCategoria.classList.add("oculto");
-    formularioProducto.classList.remove("oculto");
+    cerrarModalCreacionCategorias({
+        IdModalCreacionCategoria: "modal-crear-categoria-contenedor",
+        IdModalFormularioPrevio: "modalCreacionProducto",
+    });
 });
 
 // se escucha el evento de click en el boton de aplicar filtro de categoria
