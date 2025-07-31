@@ -36,8 +36,8 @@ formulario.addEventListener("submit", (event) => {
 
     // Obtener los valores de los campos del formulario
     const nombre = document.getElementById("nombre-producto").value;
-    const precio = document.getElementById("precio-producto").value;
-    const cantidad = document.getElementById("cantidad-producto").value;
+    const precio = Number(document.getElementById("precio-producto").value);
+    const cantidad = Number(document.getElementById("cantidad-producto").value);
     const categoria = document.getElementById("categoria-producto").value;
 
     // Se crea un nuevo objeto producto con los valores obtenidos
