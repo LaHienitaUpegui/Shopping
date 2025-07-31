@@ -6,31 +6,31 @@ function crearCategoria({
     formularioCreacionCategoria,
     modalFormularioCreacionCategoria,
 }) {
-    // obtener el nombre de la categoria desde su input
+    // Obtener el nombre de la categoría desde su input
     const nombreCategoria = document.getElementById(
         inputNombreCategoriaId
     ).value;
 
-    // crear un objeto categoria
+    // Crear un objeto categoría
     const categoria = {
         nombre: nombreCategoria,
     };
 
-    // se obtiene las categorias desde el local storage
+    // Se obtienen las categorías desde el local storage
     const categorias = JSON.parse(localStorage.getItem("categorias")) || [];
-    // Verificar si la categoria ya existe en el local storage
+    // Verificar si la categoría ya existe en el local storage
     if (categorias.some((cat) => cat.nombre === categoria.nombre)) {
         alert("La categoria ya existe");
         return;
     } else {
-        // agregar la categoria al array de categorias
+        // Agregar la categoría al array de categorías
         categorias.push(categoria);
-        // guardar la lista de categorias en el local storage
+        // Guardar la lista de categorías en el local storage
         localStorage.setItem("categorias", JSON.stringify(categorias));
-        alert("Categoria creada exitosamente");
+        alert("Categoría creada exitosamente");
     }
 
-    // anadir la categoria al select del formulario, ya sea el de creacion de producto o el de administracion de categorias
+    // Añadir la categoría al select del formulario, ya sea el de creación de producto o el de administración de categorías
     if (formularioPrevio) {
         const selectFormularioPrevio = document.getElementById(
             selectformularioPrevioId
@@ -48,7 +48,7 @@ function crearCategoria({
         }
     }
 
-    // Limpiar el formulario de creacion de categoria y ocultar el modal
+    // Limpiar el formulario de creación de categoría y ocultar el modal
     formularioCreacionCategoria.reset();
     modalFormularioCreacionCategoria.classList.add("oculto");
 
@@ -84,27 +84,27 @@ function renderizarNuevoProducto(nuevoProducto) {
         <h3 class="nombre-producto">${nuevoProducto.nombre}</h3>
         <p class="propiedad-producto"><strong>Precio:</strong> $${nuevoProducto.precio}</p>
         <p class="propiedad-producto"><strong>Cantidad:</strong> ${nuevoProducto.cantidad}</p>
-        <p class="propiedad-producto"><strong>Categoria:</strong> ${nuevoProducto.categoria}</p>
+        <p class="propiedad-producto"><strong>Categoría:</strong> ${nuevoProducto.categoria}</p>
         <button class="btn-modificar-producto" data-id="${nuevoProducto.id}">Modificar producto</button>
         <button class="btn-eliminar-producto" data-id="${nuevoProducto.id}">Eliminar</button>
     `;
     contenedorTarjetas.appendChild(tarjetaDelNuevoProducto);
 }
 
-// Funcion para obtener el producto por medio del id
+// Función para obtener el producto por medio del id
 function obtenerProductoPorId(id) {
     const productos = JSON.parse(localStorage.getItem("productos")) || [];
     return productos.find((producto) => producto.id === id);
 }
 
-// Funcion para agregar categorias a un select especifico
+// Función para agregar categorías a un select específico
 function cargarCategoriasHaciaSelect({ selectId }) {
-    // se obtiene el select
+    // Se obtiene el select
     const select = document.getElementById(selectId);
-    // se obtiene el array de categorias desde el local storage
+    // Se obtiene el array de categorías desde el local storage
     const categorias = JSON.parse(localStorage.getItem("categorias")) || [];
 
-    // se valida si en el select ya existe una categoria con el mismo valor de cada una de las categorias en el local storage
+    // Se valida si en el select ya existe una categoría con el mismo valor de cada una de las categorías en el local storage
     categorias.forEach((categoria) => {
         if (
             !Array.from(select.options).some(
@@ -119,7 +119,7 @@ function cargarCategoriasHaciaSelect({ selectId }) {
     });
 }
 
-// Funcion que permite cerrar el modal de creacion de categorias y que muestre luego el formulario que se le especifique
+// Función que permite cerrar el modal de creación de categorías y que muestre luego el formulario que se le especifique
 function cerrarModalCreacionCategorias({
     IdModalCreacionCategoria,
     IdModalFormularioPrevio,
@@ -135,7 +135,7 @@ function cerrarModalCreacionCategorias({
     formularioPrevioParaMostrar.classList.remove("oculto");
 }
 
-// Funcion que permite ocultar un modal que se le especifique y mostrar otro modal que tambien se le especifique
+// Función que permite ocultar un modal que se le especifique y mostrar otro modal que también se le especifique
 function mostrarModalYOcultarFormularioPrevio({
     IdModalFormularioPrevio,
     IdModalNuevoParaMostrar,

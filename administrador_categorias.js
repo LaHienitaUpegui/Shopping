@@ -1,75 +1,75 @@
-// * Elementos del DOM del admin de categorias
-// obtener el boton para abrir el administrador de categorias
+// * Elementos del DOM del admin de categorías
+// Obtener el botón para abrir el administrador de categorías
 const btnAdminCategorias = document.getElementById(
     "btn-abrir-modal-admin-categorias"
 );
 
-// obtener el modal de administrador de categorias
+// Obtener el modal de administrador de categorías
 const modalAdminCategorias = document.querySelector(
     ".modal-administrar-categorias-contenedor"
 );
 
-// obtener boton de cancelar cambios en el modal de administrador de categorias
+// Obtener botón de cancelar cambios en el modal de administrador de categorías
 const btnCancelarCambiosAdminCategorias = document.getElementById(
     "btn-cancelar-cambios-admin-categorias"
 );
 
-// obtener boton de crear una categoria
+// Obtener botón de crear una categoría
 const btnCreacionCategoria = document.getElementById(
     "btn-crear-nueva-categoria"
 );
 
-// form de creacion de categorias desde el admin de categorias
+// Formulario de creación de categorías desde el admin de categorías
 const formularioCreacionCategoriaDesdeAdminCategorias = document.getElementById(
     "formulario-crear-categoria-admin-categorias"
 );
 
-// modal donde se crean las categorias que tiene el form de creacion de categorias (Desde el admin de categorias)
+// Modal donde se crean las categorías que tiene el formulario de creación de categorías (desde el admin de categorías)
 const modalContenedorDelFormCreacionCategorias = document.getElementById(
     "modal-crear-categoria-admin-categorias-contenedor"
 );
 // * Fin bloque de elementos
 
-// * Bloque manejador de aparicion y ocultacion del modal admin categorias
-// desplegar el modal de admin categorias la hacer clic en el boton de admin categorias
+// * Bloque manejador de aparición y ocultación del modal admin categorías
+// Desplegar el modal de admin categorías al hacer clic en el botón de admin categorías
 btnAdminCategorias.addEventListener("click", () => {
     modalAdminCategorias.classList.remove("oculto");
 });
-// ocultar el modal de admin categorias la hacer clic en el boton de cancelar
+// Ocultar el modal de admin categorías al hacer clic en el botón de cancelar
 btnCancelarCambiosAdminCategorias.addEventListener("click", () => {
     modalAdminCategorias.classList.add("oculto");
 });
-// ocultar el modal al hacer clic fuera del formulario
+// Ocultar el modal al hacer clic fuera del formulario
 window.addEventListener("click", (evento) => {
     if (evento.target === modalAdminCategorias) {
         modalAdminCategorias.classList.add("oculto");
     }
 });
 
-// cargar categorias desde el local storage en el select del modal
+// Cargar categorías desde el local storage en el select del modal
 btnAdminCategorias.addEventListener("click", () => {
     cargarCategoriasHaciaSelect({ selectId: "categorias-existentes" });
 });
-// * Fin bloque manejador de aparicion y ocultacion del modal admin categorias
+// * Fin bloque manejador de aparición y ocultación del modal admin categorías
 
-// * Bloque manejador del boton de accion de crear una categoria en el admin de categorias
-// cuando se da clic al boton de crear categoria, se debe desplegar el modal de creacion de categoria y se esconde el modal actual
+// * Bloque manejador del botón de acción de crear una categoría en el admin de categorías
+// Cuando se da clic al botón de crear categoría, se debe desplegar el modal de creación de categoría y se esconde el modal actual
 btnCreacionCategoria.addEventListener("click", () => {
-    // se esconde el modal de admin categorias
+    // Se esconde el modal de admin categorías
     modalAdminCategorias.classList.add("oculto");
 
-    // se muestra el modal de creacion de categorias
+    // Se muestra el modal de creación de categorías
     const modalCreacionCategoriaDesdeAdminCategorias = document.querySelector(
         ".modal-crear-categoria-admin-categorias-contenedor"
     );
     modalCreacionCategoriaDesdeAdminCategorias.classList.remove("oculto");
 });
 
-// Crear categoria cuando se escuche el submit del formulario de creacion de categoria del admin de categorias
+// Crear categoría cuando se escuche el submit del formulario de creación de categoría del admin de categorías
 formularioCreacionCategoriaDesdeAdminCategorias.addEventListener(
     "submit",
     (evento) => {
-        // previene el comportamiento por defecto del formulario de recargar la pagina
+        // Previene el comportamiento por defecto del formulario de recargar la página
         evento.preventDefault();
 
         crearCategoria({
@@ -84,7 +84,7 @@ formularioCreacionCategoriaDesdeAdminCategorias.addEventListener(
     }
 );
 
-// cerrar modal de creacion de categoria si se da clic en cancelar o por fuera del formulario
+// Cerrar modal de creación de categoría si se da clic en cancelar o por fuera del formulario
 const modalCreacionCategoriaDesdeAdminCategorias = document.querySelector(
     ".modal-crear-categoria-admin-categorias-contenedor"
 );
@@ -99,17 +99,17 @@ btnCerrarModalCreacionCategorias.addEventListener("click", () => {
         IdModalFormularioPrevio: "modal-administrar-categorias-contenedor",
     });
 });
-// * Fin del bloque manejador del boton de accion de crear una categoria en el admin de categorias
+// * Fin del bloque manejador del botón de acción de crear una categoría en el admin de categorías
 
-// * Logica del boton de "Modificar una categoria" en el admin de categorias
-// hacer que se muestre el modal de modificacion de categoria cuando se da clic en el boton de modificar categoria y cargar las categorias del local storage en el select.
+// * Lógica del botón de "Modificar una categoría" en el admin de categorías
+// Hacer que se muestre el modal de modificación de categoría cuando se da clic en el botón de modificar categoría y cargar las categorías del local storage en el select.
 
-// se obtiene el boton y el modal de modificacion de categoria
+// Se obtiene el botón y el modal de modificación de categoría
 const btnModificarCategoria = document.getElementById(
     "btn-modificar-categoria"
 );
 
-// escuchar el evento de clic en el boton de modificar categoria y mostrar el modal de modificacion de categoria con las categorias cargadas desde el local storage
+// Escuchar el evento de clic en el botón de modificar categoría y mostrar el modal de modificación de categoría con las categorías cargadas desde el local storage
 btnModificarCategoria.addEventListener("click", () => {
     mostrarModalYOcultarFormularioPrevio({
         IdModalFormularioPrevio: "modal-administrar-categorias-contenedor",
@@ -117,65 +117,65 @@ btnModificarCategoria.addEventListener("click", () => {
             "modal-modificar-categoria-admin-categ-contenedor",
     });
 
-    // cargar las categorias en el select de modificacion de categorias
+    // Cargar las categorías en el select de modificación de categorías
     cargarCategoriasHaciaSelect({ selectId: "selector-categorias-existentes" });
 });
 
-// escuchar el evento de submit del formulario y modificar la categoria seleccionada en el local storage y cargarla en el select de categorias existentes
+// Escuchar el evento de submit del formulario y modificar la categoría seleccionada en el local storage y cargarla en el select de categorías existentes
 const btnSubmitFormularioModificarCategoria = document.getElementById(
     "btn-enviar-modificar-categoria"
 );
 btnSubmitFormularioModificarCategoria.addEventListener("click", (evento) => {
     evento.preventDefault();
 
-    // se obtiene el array actual de categorias que esta guardado en el local storage
+    // Se obtiene el array actual de categorías que está guardado en el local storage
     let categorias = JSON.parse(localStorage.getItem("categorias")) || [];
 
-    // obtener el valor de la categoria que se quiere modificar
+    // Obtener el valor de la categoría que se quiere modificar
     const categoriaParaModificar = document.getElementById(
         "selector-categorias-existentes"
     ).value;
 
-    // se obtiene el nuevo nombre de categoria
+    // Se obtiene el nuevo nombre de categoría
     const nuevoNombreCategoria = document.getElementById(
         "nuevo-nombre-categoria"
     ).value;
 
-    // verifica si ya existe una categoria en el array del local storage con el nuevo nombre que introdujo el usuario
+    // Verifica si ya existe una categoría en el array del local storage con el nuevo nombre que introdujo el usuario
     if (categorias.some((categ) => categ.nombre === nuevoNombreCategoria)) {
         alert(
             `Ya existe una categoria con el nombre "${nuevoNombreCategoria}" por favor ingresa otro nombre que no este registrado`
         );
     } else {
-        // se obtiene el indice del objeto en el array del local storage que coincida con el valor que el usuario puso en el select de seleccion de categoria
+        // Se obtiene el índice del objeto en el array del local storage que coincida con el valor que el usuario puso en el select de selección de categoría
         const index = categorias.findIndex(
             (categoria) =>
                 categoria.nombre.toLowerCase() ===
                 categoriaParaModificar.toLowerCase()
         );
 
-        // el navegador suelta este error si no se encuentra el indice de la categoria que se quiere modificar
+        // El navegador suelta este error si no se encuentra el índice de la categoría que se quiere modificar
         if (index === -1) {
             alert("No se encontro la categoria a modificar");
         }
 
-        // se hace el cambio del nombre de la categoria en el array
+        // Se hace el cambio del nombre de la categoría en el array
         categorias[index].nombre = nuevoNombreCategoria;
 
-        // se guarda de nuevo en el local storage el array con la categoria modificada
+        // Se guarda de nuevo en el local storage el array con la categoría modificada
         localStorage.setItem("categorias", JSON.stringify(categorias));
 
-        // se carga la lista de categorias con el cambio realizado en el select
+        // Se carga la lista de categorías con el cambio realizado en el select
         cargarCategoriasHaciaSelect({
             selectId: "selector-categorias-existentes",
         });
 
-        // se muestra una alerta que indica que el cambio fue realizado con exito
+        // Se muestra una alerta que indica que el cambio fue realizado con éxito
         alert("Cambios realizados con exito");
     }
 });
 
-// cerrar el modal de modificacion de categorias y abrir el admin de categorias cuando se de clic al boton de cancelar
+// Cerrar el modal de modificación de categorías y abrir el admin de categorías cuando se dé clic al botón de cancelar
 const btnCancelarModificacioCategoria = document.getElementById(
     "btn-cancelar-modificar-categoria"
 );
@@ -186,17 +186,17 @@ btnCancelarModificacioCategoria.addEventListener("click", () => {
         IdModalNuevoParaMostrar: "modal-administrar-categorias-contenedor",
     });
 });
-// * Fin del bloque de logica del boton de "Modificar una categoria" en el admin de categorias
+// * Fin del bloque de lógica del botón de "Modificar una categoría" en el admin de categorías
 
-// * Bloque de logica del boton de "Eliminar categoria" en el admin de categorias
-// hacer que aparezca el modal para eliminar categorias
+// * Bloque de lógica del botón de "Eliminar categoría" en el admin de categorías
+// Hacer que aparezca el modal para eliminar categorías
 const btnEliminarCategorias = document.getElementById("btn-eliminar-categoria");
 const modalEliminarCategorias = document.getElementById(
     "modal-eliminar-categoria-admin-categ-contenedor"
 );
 
 btnEliminarCategorias.addEventListener("click", () => {
-    // cargar las categorias en el select
+    // Cargar las categorías en el select
     cargarCategoriasHaciaSelect({
         selectId: "selector-categorias-para-eliminar",
     });
@@ -208,49 +208,49 @@ btnEliminarCategorias.addEventListener("click", () => {
     });
 });
 
-// logica para eliminar una categoria
+// Lógica para eliminar una categoría
 
-// boton de aceptar eliminacion de categoria
+// Botón de aceptar eliminación de categoría
 const btnAceptarEliminacionCategoria = document.getElementById(
     "btn-aceptar-eliminar-categoria"
 );
 btnAceptarEliminacionCategoria.addEventListener("click", () => {
-    // array de categorias guardado en el local storage
+    // Array de categorías guardado en el local storage
     const categorias = JSON.parse(localStorage.getItem("categorias")) || [];
 
-    // categoria que selecciono el usuario para eliminar (valor del select de categorias)
+    // Categoría que seleccionó el usuario para eliminar (valor del select de categorías)
     const categoriaAEliminar = document.getElementById(
         "selector-categorias-para-eliminar"
     ).value;
 
-    // verifica que si haya una categoria en el array de donde se quiere eliminar, donde su nombre sea igual a la que escogio el usuario en el selector
+    // Verifica que sí haya una categoría en el array de donde se quiere eliminar, donde su nombre sea igual a la que escogió el usuario en el selector
     if (
         categorias.some(
             (categ) =>
                 categ.nombre.toLowerCase() === categoriaAEliminar.toLowerCase()
         )
     ) {
-        // se obtiene el indice de la categoria en el array con el mismo nombre de la categoria que escogio el usuario
+        // Se obtiene el índice de la categoría en el array con el mismo nombre de la categoría que escogió el usuario
         const index = categorias.findIndex(
             (categ) =>
                 categ.nombre.toLowerCase() === categoriaAEliminar.toLowerCase()
         );
 
-        // se elimina la categoria especifica usando su indice
+        // Se elimina la categoría específica usando su índice
         categorias.splice(index, 1);
 
-        // se cargan de nuevo las categorias en el local storage
+        // Se cargan de nuevo las categorías en el local storage
         localStorage.setItem("categorias", JSON.stringify(categorias));
 
-        // se cargan de nuevo las categorias en el select
+        // Se cargan de nuevo las categorías en el select
         cargarCategoriasHaciaSelect({
             selectId: "selector-categorias-para-eliminar",
         });
 
-        // se muestra un mensaje de exito
-        alert("Se elimino con exito la categoria");
+        // Se muestra un mensaje de éxito
+        alert("Se eliminó con éxito la categoría");
     } else {
-        alert("No se encontro la categoria que quieres eliminar, escoge otra.");
+        alert("No se encontró la categoría que quieres eliminar, escoge otra.");
     }
 
     mostrarModalYOcultarFormularioPrevio({
@@ -260,7 +260,7 @@ btnAceptarEliminacionCategoria.addEventListener("click", () => {
     });
 });
 
-// cerrar el modal de eliminacion de categorias y abrir el modal de admin de categorias
+// Cerrar el modal de eliminación de categorías y abrir el modal de admin de categorías
 const btnCerrarModalEliminarCategorias = document.getElementById(
     "btn-cancelar-eliminar-categoria"
 );

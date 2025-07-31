@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Esta aplicación es un catálogo de productos interactivo desarrollado en JavaScript, HTML y CSS, que permite gestionar productos y categorías de manera sencilla y visual. Está orientada a la administración de inventarios pequeños o medianos, facilitando la creación, modificación, filtrado y eliminación de productos y categorías desde una interfaz amigable.
+Aplicación web interactiva para la gestión de productos y categorías, desarrollada con JavaScript, HTML y CSS. Permite administrar inventarios pequeños o medianos de forma visual, ágil y segura, con una interfaz moderna y adaptable. Todas las operaciones se realizan desde el navegador, sin necesidad de backend.
 
 ---
 
@@ -10,45 +10,47 @@ Esta aplicación es un catálogo de productos interactivo desarrollado en JavaSc
 
 -   **Gestión de productos:**
 
-    -   Agregar nuevos productos con nombre, precio, cantidad, imagen y categoría.
-    -   Modificar productos existentes (nombre, precio, cantidad, imagen, categoría).
+    -   Agregar productos con nombre, precio (soporta decimales), cantidad y categoría.
+    -   Modificar productos existentes (nombre, precio, cantidad, categoría).
     -   Eliminar productos del catálogo.
-    -   Visualización de productos en tarjetas con información relevante.
+    -   Visualización en tarjetas con información relevante y botones de acción.
 
 -   **Gestión de categorías:**
 
-    -   Crear nuevas categorías desde diferentes secciones de la app.
+    -   Crear nuevas categorías desde cualquier sección (formulario de producto o panel de administración).
     -   Modificar el nombre de categorías existentes.
-    -   Eliminar categorías (con confirmación).
-    -   Filtrar productos por categoría desde la barra de navegación.
+    -   Eliminar categorías desde el panel de administración (con confirmación).
+    -   Filtrar productos por categoría desde la barra de acciones.
     -   Sincronización automática de las categorías en todos los selectores de la app.
 
 -   **Persistencia de datos:**
 
-    -   Todos los productos y categorías se almacenan en el `localStorage` del navegador, permitiendo que la información se conserve entre sesiones.
+    -   Todos los productos y categorías se almacenan en el `localStorage` del navegador, conservando la información entre sesiones.
 
 -   **Interfaz de usuario:**
 
     -   Uso de modales para formularios de creación, modificación y eliminación.
-    -   Botones de acción claros y accesibles para cada operación.
+    -   Botones de acción claros y accesibles.
     -   Mensajes de alerta para confirmar acciones importantes o advertir sobre errores (por ejemplo, nombres duplicados).
-    -   Diseño responsive y moderno.
+    -   Diseño responsive, moderno y accesible.
+    -   Estilos personalizados para selects, inputs y botones, con transiciones y separadores visuales.
 
 -   **Validaciones y experiencia de usuario:**
     -   Prevención de duplicados en productos y categorías.
-    -   Validación de campos obligatorios en formularios.
+    -   Validación de campos obligatorios y tipos de datos (precio decimal, cantidad numérica).
     -   Confirmaciones antes de eliminar elementos.
     -   Actualización dinámica de la interfaz tras cada operación.
+    -   Manejo robusto de errores y mensajes informativos.
 
 ---
 
 ## Estructura de archivos
 
 -   `index.html`: Estructura principal de la webapp y modales.
--   `style.css`: Estilos visuales y responsive.
+-   `style.css`: Estilos visuales, responsive y personalizados.
 -   `script.js`: Lógica principal de productos y renderizado.
--   `categorias.js`: Lógica de gestión de categorías y filtrado.
--   `administrador_categorias.js`: Lógica de administración avanzada de categorías (crear, modificar, eliminar desde el panel de administración).
+-   `categorias.js`: Lógica de gestión y filtrado de categorías.
+-   `administrador_categorias.js`: Administración avanzada de categorías (crear, modificar, eliminar desde el panel).
 -   `funciones.js`: Funciones auxiliares reutilizables (crear, eliminar, renderizar, cargar datos, etc).
 -   `README.md`: Documentación del proyecto.
 
@@ -64,7 +66,7 @@ Esta aplicación es un catálogo de productos interactivo desarrollado en JavaSc
 
 2. **Filtrar productos:**
 
-    - Usa el selector de categorías en la barra de navegación para ver solo los productos de una categoría específica.
+    - Usa el selector de categorías en la barra de acciones para ver solo los productos de una categoría específica.
 
 3. **Modificar o eliminar productos:**
 
@@ -78,16 +80,18 @@ Esta aplicación es un catálogo de productos interactivo desarrollado en JavaSc
 ## Tecnologías utilizadas
 
 -   HTML5
--   CSS3
+-   CSS3 (con variables y transiciones)
 -   JavaScript (ES6+)
 
 ---
 
 ## Notas adicionales
 
--   La aplicación no requiere backend ni base de datos externa.
--   Todo el almacenamiento es local (localStorage).
--   El código está modularizado para facilitar el mantenimiento y la escalabilidad.
+-   No requiere backend ni base de datos externa.
+-   Todo el almacenamiento es local (`localStorage`).
+-   El código está modularizado y documentado para facilitar el mantenimiento y la escalabilidad.
+-   Todos los textos visibles y comentarios están corregidos ortográficamente.
+-   El diseño es adaptable y accesible para distintos dispositivos y usuarios.
 
 ---
 
@@ -98,5 +102,3 @@ Desarrollado por LaHienitaUpegui y colaboradores.
 ---
 
 ¡Disfruta gestionando tu catálogo de productos!
-
-# Shopping

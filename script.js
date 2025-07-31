@@ -12,19 +12,19 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Hacer que aparezca el formulario cuando se hace clic en el botón "Agregar Producto"
+// Hacer que aparezca el formulario cuando se hace clic en el botón "Agregar producto"
 const btnAgregarProducto = document.getElementById("btn-agregar-producto");
 btnAgregarProducto.addEventListener("click", () => {
-    // se vacian los campos del formulario
+    // Se vacían los campos del formulario
     document.getElementById("nombre-producto").value = "";
     document.getElementById("precio-producto").value = "";
     document.getElementById("cantidad-producto").value = "";
     document.getElementById("categoria-producto").value = "sin-categoria";
 
-    // se cargan las categorias ya exisistentes en el localStorage, en el campo de seleccion de categorias
+    // Se cargan las categorías ya existentes en el localStorage, en el campo de selección de categorías
     cargarCategoriasHaciaSelect({ selectId: "categoria-producto" });
 
-    // se muestra el formulario
+    // Se muestra el formulario
     formularioProducto.classList.remove("oculto");
 });
 
@@ -52,7 +52,7 @@ formulario.addEventListener("submit", (event) => {
     // Se renderiza el nuevo producto en la lista de productos
     renderizarNuevoProducto(nuevoProducto);
 
-    // colocar la gategoria que se selecciono en el select de la pantalla principal
+    // Colocar la categoría que se seleccionó en el select de la pantalla principal
     const selectorCategorias = document.getElementById("filtro-categorias");
     if (
         !Array.from(selectorCategorias.options).some(
@@ -77,7 +77,7 @@ formulario.addEventListener("submit", (event) => {
     formularioProducto.classList.add("oculto");
 });
 
-// Hacer que se cierre el formulario cuando se hace clic en el botón "Cerrar" o cuando se hace clic por fuera del formulario
+// Hacer que se cierre el formulario cuando se hace clic en el botón "Cancelar" o cuando se hace clic por fuera del formulario
 const btnCerrarFormulario = document.querySelector(".btn-cancelar-producto");
 btnCerrarFormulario.addEventListener("click", () => {
     formularioProducto.classList.add("oculto");
@@ -99,7 +99,7 @@ document.addEventListener("click", (event) => {
         // Hacer que se muestre el formulario
         formularioMoficarProductos.classList.remove("oculto");
 
-        // Llenar los campos del formulario con los datos actual del producto
+        // Llenar los campos del formulario con los datos actuales del producto
         document.getElementById("modificar-nombre-producto").value =
             producto.nombre;
         document.getElementById("modificar-precio-producto").value =
@@ -107,13 +107,13 @@ document.addEventListener("click", (event) => {
         document.getElementById("modificar-cantidad-producto").value =
             producto.cantidad;
 
-        // se cargan las categorias ya exisistentes en el localStorage, en el campo de seleccion de categorias
+        // Se cargan las categorías ya existentes en el localStorage, en el campo de selección de categorías
         const categorias = JSON.parse(localStorage.getItem("categorias")) || [];
         const selectorCategorias = document.getElementById(
             "modificar-categoria-producto"
         );
         categorias.forEach((categoria) => {
-            // Verifica si ya existe un option dentro del select con el valor (nombre) de cada una de las categorias guardadas en el localStorage
+            // Verifica si ya existe un option dentro del select con el valor (nombre) de cada una de las categorías guardadas en el localStorage
             if (
                 !Array.from(selectorCategorias.options).some(
                     (opt) => opt.value === categoria.nombre
@@ -125,7 +125,7 @@ document.addEventListener("click", (event) => {
                 selectorCategorias.appendChild(option);
             }
         });
-        // pone la categoria actual del producto en su respectivo campo
+        // Pone la categoría actual del producto en su respectivo campo
         document.getElementById("modificar-categoria-producto").value =
             producto.categoria;
 
@@ -136,17 +136,17 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// Actualizar la informacion en el array/localStorage cuando el usuario guarde los cambios
+// Actualizar la información en el array/localStorage cuando el usuario guarde los cambios
 document.addEventListener("click", (event) => {
     if (event.target.classList.contains("btn-guardar-cambios")) {
-        // obtener el id del producto a modificar
+        // Obtener el id del producto a modificar
         const id = parseInt(event.target.getAttribute("data-id"));
 
-        // obtener el indice del producto (El array) usando su ID
+        // Obtener el índice del producto (el array) usando su ID
         let productos = JSON.parse(localStorage.getItem("productos")) || [];
         const indice = productos.findIndex((producto) => producto.id === id);
 
-        // obtener de nuevo los valores del formulario
+        // Obtener de nuevo los valores del formulario
         const nombre = document.getElementById(
             "modificar-nombre-producto"
         ).value;
@@ -160,7 +160,7 @@ document.addEventListener("click", (event) => {
             "modificar-categoria-producto"
         ).value;
 
-        // actualizar valores en el array del producto
+        // Actualizar valores en el array del producto
         if (indice !== -1) {
             productos[indice].nombre = nombre;
             productos[indice].precio = precio;
@@ -168,23 +168,23 @@ document.addEventListener("click", (event) => {
             productos[indice].categoria = categoria;
         }
 
-        // guardar los nuevos valores en el array del localStorage
+        // Guardar los nuevos valores en el array del localStorage
         localStorage.setItem("productos", JSON.stringify(productos));
 
-        // borrar los productos mostrados y volver a renderizar todos
+        // Borrar los productos mostrados y volver a renderizar todos
         const contenedor = document.getElementById("contenedor-tarjetas");
         contenedor.innerHTML = "";
         productos.forEach((producto) => {
             renderizarNuevoProducto(producto);
         });
 
-        // cerrar el modal y limpiar el formulario
+        // Cerrar el modal y limpiar el formulario
         formularioMoficarProductos.classList.add("oculto");
         document.getElementById("formulario-modificar-producto").reset();
     }
 });
 
-// hacer que se cierre el formulario de modificacion de producto cuando se le de clic al boton cancelar o por fuera del formulario
+// Hacer que se cierre el formulario de modificación de producto cuando se le dé clic al botón cancelar o por fuera del formulario
 const btnCerrarFormularioModificacionProducto = document.querySelector(
     ".btn-cancelar-modificacion-producto"
 );
@@ -196,7 +196,7 @@ window.addEventListener("click", (event) => {
         formularioMoficarProductos.classList.add("oculto");
     }
 });
-// **** Finalizacion del bloque para modificar las propiedades de un producto existente ****
+// **** Finalización del bloque para modificar las propiedades de un producto existente ****
 
 // Escuchar el evento click en el botón de eliminar producto usando delegación de eventos
 document.addEventListener("click", (event) => {
