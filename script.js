@@ -35,9 +35,6 @@ formulario.addEventListener("submit", (event) => {
     event.preventDefault();
 
     // Obtener los valores de los campos del formulario
-    const imagenProducto = document.getElementById("imagen-producto").value
-        ? document.getElementById("imagen-producto").value
-        : null;
     const nombre = document.getElementById("nombre-producto").value;
     const precio = document.getElementById("precio-producto").value;
     const cantidad = document.getElementById("cantidad-producto").value;
@@ -46,7 +43,6 @@ formulario.addEventListener("submit", (event) => {
     // Se crea un nuevo objeto producto con los valores obtenidos
     const nuevoProducto = {
         id: Date.now(), // Generar un ID único basado en la fecha actual
-        imagen: imagenProducto,
         nombre: nombre,
         precio: precio,
         cantidad: cantidad,
@@ -151,9 +147,6 @@ document.addEventListener("click", (event) => {
         const indice = productos.findIndex((producto) => producto.id === id);
 
         // obtener de nuevo los valores del formulario
-        const imagenProducto = document.getElementById("imagen-producto").value
-            ? document.getElementById("imagen-producto").value
-            : null;
         const nombre = document.getElementById(
             "modificar-nombre-producto"
         ).value;
@@ -169,7 +162,6 @@ document.addEventListener("click", (event) => {
 
         // actualizar valores en el array del producto
         if (indice !== -1) {
-            productos[indice].imagen = imagenProducto;
             productos[indice].nombre = nombre;
             productos[indice].precio = precio;
             productos[indice].cantidad = cantidad;

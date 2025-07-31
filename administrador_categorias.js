@@ -252,6 +252,12 @@ btnAceptarEliminacionCategoria.addEventListener("click", () => {
     } else {
         alert("No se encontro la categoria que quieres eliminar, escoge otra.");
     }
+
+    mostrarModalYOcultarFormularioPrevio({
+        IdModalFormularioPrevio:
+            "modal-eliminar-categoria-admin-categ-contenedor",
+        IdModalNuevoParaMostrar: "modal-administrar-categorias-contenedor",
+    });
 });
 
 // cerrar el modal de eliminacion de categorias y abrir el modal de admin de categorias

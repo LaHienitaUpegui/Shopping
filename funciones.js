@@ -81,21 +81,12 @@ function renderizarNuevoProducto(nuevoProducto) {
     tarjetaDelNuevoProducto.classList.add("tarjeta-producto");
     tarjetaDelNuevoProducto.setAttribute("data-id", nuevoProducto.id);
     tarjetaDelNuevoProducto.innerHTML = `
-        ${
-            nuevoProducto.imagen
-                ? `<img src="${nuevoProducto.imagen}" alt="${nuevoProducto.nombre}" />`
-                : ""
-        }
         <h3 class="nombre-producto">${nuevoProducto.nombre}</h3>
-        <p><strong>Precio:</strong> $${nuevoProducto.precio}</p>
-        <p><strong>Cantidad:</strong> ${nuevoProducto.cantidad}</p>
-        <p><strong>Categoria:</strong> ${nuevoProducto.categoria}</p>
-        <button class="btn-modificar-producto" data-id="${
-            nuevoProducto.id
-        }">Modificar producto</button>
-        <button class="btn-eliminar-producto" data-id="${
-            nuevoProducto.id
-        }">Eliminar</button>
+        <p class="propiedad-producto"><strong>Precio:</strong> $${nuevoProducto.precio}</p>
+        <p class="propiedad-producto"><strong>Cantidad:</strong> ${nuevoProducto.cantidad}</p>
+        <p class="propiedad-producto"><strong>Categoria:</strong> ${nuevoProducto.categoria}</p>
+        <button class="btn-modificar-producto" data-id="${nuevoProducto.id}">Modificar producto</button>
+        <button class="btn-eliminar-producto" data-id="${nuevoProducto.id}">Eliminar</button>
     `;
     contenedorTarjetas.appendChild(tarjetaDelNuevoProducto);
 }

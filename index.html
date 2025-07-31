@@ -16,19 +16,19 @@
             <nav class="barra-navegacion">
                 <h1 class="nombre-principal">Catalogo de productos</h1>
                 <button class="btn-add-product" id="btn-agregar-producto">
-                    Agregar producto
+                    Agregar nuevo producto
                 </button>
             </nav>
 
             <!-- Barra de acciones -->
             <nav class="barra-acciones">
                 <div id="filtro-categoria-contenedor">
-                    <label for="filtro-categorias"
-                        >Filtrar por categorias</label
+                    <label for="filtro-categorias" class="label-basico"
+                        >Filtrar por categorias:</label
                     >
-                    <select id="filtro-categorias">
+                    <select id="filtro-categorias" class="select-basico">
                         <option class="opcion-filtro" value="sin-categoria">
-                            Sin categoria
+                            Escoje una categoria
                         </option>
                     </select>
 
@@ -41,13 +41,15 @@
                         Aplicar filtro
                     </button>
 
+                    <div class="separador-horizontal"></div>
+
                     <!-- Boton para abrir el modal de administrador de categorias -->
                     <button
                         type="button"
                         class="btn-abrir-modal-admin-categorias"
                         id="btn-abrir-modal-admin-categorias"
                     >
-                        Administrar categorias
+                        Abrir administrador de categorias
                     </button>
                 </div>
             </nav>
@@ -55,7 +57,7 @@
         <main class="products">
             <!-- * Modal para agregar productos -->
             <div
-                class="modalCreacionProducto oculto"
+                class="modalCreacionProducto modal-contenedor oculto"
                 id="modalCreacionProducto"
             >
                 <div class="modal-contenido">
@@ -63,16 +65,6 @@
 
                     <!-- Formulario para agregar productos -->
                     <form action="" id="formulario-agregar-producto">
-                        <!-- Campo para subir una imagen del producto -->
-                        <label for="imagen-producto"
-                            >Agrega un imagen del producto</label
-                        >
-                        <input
-                            type="file"
-                            name="imagen-producto"
-                            id="imagen-producto"
-                        />
-
                         <!-- Campo para ingresar el nombre del producto -->
                         <label for="nombre-producto">Nombre del producto</label>
                         <input
@@ -101,7 +93,10 @@
                         />
 
                         <!-- Campo para seleccionar la categoria del producto -->
-                        <div id="titulo-categorias-contenedor">
+                        <div
+                            id="titulo-categorias-contenedor"
+                            class="titulo-categorias-contenedor"
+                        >
                             <label for="categoria-producto">Categoria</label>
                             <button
                                 type="button"
@@ -114,38 +109,39 @@
                         <select
                             id="categoria-producto"
                             name="categoria-producto"
+                            class="select-basico"
                         >
                             <option value="sin-categoria">Sin categoria</option>
                         </select>
 
                         <!-- Botones para enviar o cancelar el formulario -->
-                        <button class="btn-agregar-producto" type="submit">
-                            Agregar producto
-                        </button>
-                        <button class="btn-cancelar-producto" type="button">
-                            Cancelar
-                        </button>
+                        <div class="botones-cancelar-confirmar-formulario">
+                            <button
+                                class="btn-agregar-producto"
+                                id="btn-agregar-producto"
+                                type="submit"
+                            >
+                                Agregar producto
+                            </button>
+                            <button
+                                class="btn-cancelar-producto"
+                                id="btn-cancelar-producto"
+                                type="button"
+                            >
+                                Cancelar
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
 
             <!-- * Modal para modificar un producto ya existente -->
-            <div class="modalModificacionProducto oculto">
+            <div class="modalModificacionProducto modal-contenedor oculto">
                 <div class="modal-contenido">
                     <h2 class="titulo-modal">Modificar producto</h2>
 
                     <!-- Formulario para modificar productos -->
                     <form action="" id="formulario-modificar-producto">
-                        <!-- Campo con la imagen actual del producto -->
-                        <label for="modificar-imagen-producto"
-                            >Agrega un imagen del producto</label
-                        >
-                        <input
-                            type="file"
-                            name="modificar-imagen-producto"
-                            id="modificar-imagen-producto"
-                        />
-
                         <!-- Campo con el nombre actual del producto -->
                         <label for="modificar-nombre-producto"
                             >Nombre del producto</label
@@ -178,45 +174,44 @@
                         />
 
                         <!-- Campo con la categoria actual del producto -->
-                        <div id="titulo-categorias-contenedor">
-                            <label for="modificar-categoria-producto"
-                                >Categoria</label
-                            >
-                            <button
-                                type="button"
-                                class="btn-agregar-categoria"
-                                id="btn-agregar-categoria"
-                            >
-                                Agregar categoria
-                            </button>
-                        </div>
+                        <label for="modificar-categoria-producto"
+                            >Categoria</label
+                        >
                         <select
                             id="modificar-categoria-producto"
                             name="modificar-categoria-producto"
+                            class="select-basico"
                         >
                             <option value="sin-categoria">Sin categoria</option>
                         </select>
 
                         <!-- Botones para enviar o cancelar el formulario -->
-                        <button class="btn-guardar-cambios" type="button">
-                            Guardar cambios
-                        </button>
-                        <button
-                            class="btn-cancelar-modificacion-producto"
-                            type="button"
-                        >
-                            Cancelar
-                        </button>
+                        <div class="botones-cancelar-confirmar-formulario">
+                            <button
+                                class="btn-guardar-cambios"
+                                id="btn-guardar-cambios"
+                                type="button"
+                            >
+                                Guardar cambios
+                            </button>
+                            <button
+                                class="btn-cancelar-modificacion-producto"
+                                id="btn-cancelar-modificacion-producto"
+                                type="button"
+                            >
+                                Cancelar
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
 
             <!-- * Modal para crear una categoria -->
             <div
-                class="modal-crear-categoria-contenedor oculto"
+                class="modal-crear-categoria-contenedor modal-contenedor oculto"
                 id="modal-crear-categoria-contenedor"
             >
-                <div class="modal-crear-categoria-contenido">
+                <div class="modal-crear-categoria-contenido modal-contenido">
                     <h2 class="titulo-modal">Crear una nueva categoria</h2>
 
                     <!-- Foromulario para crear una categoria -->
@@ -230,43 +225,46 @@
                             name="nombre-categoria"
                             required
                         />
-                        <button type="submit" class="btn-crear-categoria">
-                            Crear categoria
-                        </button>
-                        <button
-                            type="button"
-                            class="btn-cancelar-creacion-categoria"
+
+                        <div
+                            class="botones-cancelar-confirmar-formulario botones-especiales-form-crear-categoria"
                         >
-                            Cancelar
-                        </button>
+                            <button
+                                type="submit"
+                                class="btn-crear-categoria"
+                                id="btn-crear-categoria"
+                            >
+                                Crear categoria
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-cancelar-creacion-categoria"
+                                id="btn-cancelar-creacion-categoria"
+                            >
+                                Cancelar
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
 
             <!-- * Modal de administrador de categorias -->
             <div
-                class="modal-administrar-categorias-contenedor oculto"
+                class="modal-administrar-categorias-contenedor modal-contenedor oculto"
                 id="modal-administrar-categorias-contenedor"
             >
-                <div class="modal-administrar-categorias-contenido">
+                <div
+                    class="modal-administrar-categorias-contenido modal-contenido"
+                >
                     <h2 class="titulo-modal-administrar-categorias">
-                        Administrar categorias
+                        Administrador de categorias
                     </h2>
                     <form action="" id="formulario-administrar-categorias">
                         <!-- Selector de categoria existente y botones de acciones -->
+                        <p class="opciones-acciones-categorias">
+                            Selecciona la accion que deseas realizar
+                        </p>
                         <fieldset id="categorias-existentes-contenedor">
-                            <label for="categorias-existentes"
-                                >Selecciona una categoria</label
-                            >
-                            <select
-                                id="categorias-existentes"
-                                name="categorias-existentes"
-                            >
-                                <option value="sin-categoria">
-                                    Sin categoria
-                                </option>
-                            </select>
-
                             <!-- botones de acciones -->
                             <button
                                 type="button"
@@ -314,10 +312,12 @@
 
             <!-- * Modal para crear una categoria desde el admin de categorias -->
             <div
-                class="modal-crear-categoria-admin-categorias-contenedor oculto"
+                class="modal-crear-categoria-admin-categorias-contenedor modal-contenedor oculto"
                 id="modal-crear-categoria-admin-categorias-contenedor"
             >
-                <div class="modal-crear-categoria-admin-categorias-contenido">
+                <div
+                    class="modal-crear-categoria-admin-categorias-contenido modal-contenido"
+                >
                     <h2 class="titulo-modal-crear-categoria">
                         Crear una nueva categoria
                     </h2>
@@ -334,15 +334,24 @@
                             name="nombre-categoria-admin-categorias"
                             required
                         />
-                        <button type="submit" class="btn-crear-categoria">
-                            Crear categoria
-                        </button>
-                        <button
-                            type="button"
-                            class="btn-cancelar-creacion-categoria-admin-categorias"
+                        <div
+                            class="botones-cancelar-confirmar-formulario botones-especiales-form-crear-categoria"
                         >
-                            Cancelar
-                        </button>
+                            <button
+                                type="submit"
+                                class="btn-crear-categoria"
+                                id="btn-crear-categoria"
+                            >
+                                Crear categoria
+                            </button>
+                            <button
+                                type="button"
+                                class="btn-cancelar-creacion-categoria-admin-categorias"
+                                id="btn-cancelar-creacion-categoria-admin-categorias"
+                            >
+                                Cancelar
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -350,11 +359,11 @@
             <!-- * Modal para modificar una categoria desde el admin de categorias -->
             <div
                 id="modal-modificar-categoria-admin-categ-contenedor"
-                class="modal-modificar-categoria-admin-categ-contenedor oculto"
+                class="modal-modificar-categoria-admin-categ-contenedor modal-contenedor oculto"
             >
                 <div
                     id="modal-modificar-categoria-admin-categ-contenido"
-                    class="modal-modificar-categoria-admin-categ-contenido"
+                    class="modal-modificar-categoria-admin-categ-contenido modal-contenido"
                 >
                     <h2 class="titulo-modal">Modificar una categoria</h2>
 
@@ -376,6 +385,7 @@
                             <select
                                 name="selector-categorias-existentes"
                                 id="selector-categorias-existentes"
+                                class="select-basico"
                             >
                                 <option value="">
                                     Seleccione una categoria
@@ -400,9 +410,9 @@
                         </fieldset>
 
                         <!-- Botones para enviar o cancelar el formulario -->
-                        <fieldset
-                            class="botones-enviar-cancelar-contenedor"
-                            id="botones-enviar-cancelar-contenedor"
+                        <div
+                            class="botones-cancelar-confirmar-formulario botones-especiales-form-crear-categoria"
+                            id="botones-cancelar-confirmar-formulario"
                         >
                             <button
                                 type="button"
@@ -418,7 +428,7 @@
                             >
                                 Cancelar
                             </button>
-                        </fieldset>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -426,11 +436,11 @@
             <!-- * Modal para eliminar una categoria desde el admin de categorias -->
             <div
                 id="modal-eliminar-categoria-admin-categ-contenedor"
-                class="modal-eliminar-categoria-admin-categ-contenedor oculto"
+                class="modal-eliminar-categoria-admin-categ-contenedor modal-contenedor oculto"
             >
                 <div
                     id="modal-eliminar-categoria-admin-categ-contenido"
-                    class="modal-eliminar-categoria-admin-categ-contenido"
+                    class="modal-eliminar-categoria-admin-categ-contenido modal-contenido"
                 >
                     <h2 class="titulo-modal">Elimina una categoria</h2>
 
@@ -452,6 +462,7 @@
                             <select
                                 name="selector-categorias-para-eliminar"
                                 id="selector-categorias-para-eliminar"
+                                class="select-basico"
                             >
                                 <option value="">
                                     Seleccione una categoria
@@ -460,8 +471,8 @@
                         </fieldset>
 
                         <!-- Botones para eliminar categoria o para cancelar y salir del modal -->
-                        <fieldset
-                            class="botones-eliminar-cancelar-contenedor"
+                        <div
+                            class="botones-cancelar-confirmar-formulario botones-especiales-form-crear-categoria"
                             id="botones-eliminar-cancelar-contenedor"
                         >
                             <button
@@ -478,7 +489,7 @@
                             >
                                 Cancelar
                             </button>
-                        </fieldset>
+                        </div>
                     </form>
                 </div>
             </div>
